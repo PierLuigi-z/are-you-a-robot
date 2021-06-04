@@ -1,24 +1,35 @@
 ! version = 2.0
 
-+ hello
-- Bonjour, comment vas-tu?
++ [*] (hi|hello|hey) [*]
+- Hello! Bonjour! Ciao! ¡Hola! 你好！ Welcome to Tango, an international restaurant that serves dishes from five different countries! I am bot, anything I can help you with?
 
-+ _
-% hello what is your name
-- Nice to meet you <formal>!
 
-+ my name is *
-- Nice to meet you <star>
-- Nice meeting you <star>
-
-+ thank you
-- You are welcome
-- Welcome
-- No problem
-- No worries!
-
++ [*] (book|reserve|table) [*]
+- Great, so you wanna make a reservation, is that right?
 + *
-- Sorry did not get what you said
-- I am afraid that I can not understand you
-- Sorry can you please elaborate that for me
-- I don't get it!
+% great so you wanna make a reservation is that right
+* <star> == yes => Sure! How many people are coming?{topic=reservation}
+* <star> == no  => OK then! Let me know if you need any help!
+- A yes or no answer would do!
++ *
+% a yes or no answer would do
+* <star> == yes => Sure! How many people are coming?{topic=reservation}
+* <star> == no  => OK then! Let me know if you need any help!
+
+
+> topic reservation
+
++ # [people]
+- I have marked it down. Can I have your first name please?
++ * [people]
+- Please use a number instead!
+
++ my name is|i am *
+- <set name=<formal>>Nice to meet you, <get name>! What time would you like?
++ *
+% i have marked it down can i have your first name please
+- <set name=<formal>>Nice to meet you, <get name>! What time would you like?
+
+
+< topic
+
